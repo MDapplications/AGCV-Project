@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        
+<!-- ------------------------------------------ POPUP NOUVEL UTILISATEUR -------------------------------------------------- -->
+        
+        <div th:fragment="user">
+            <div id="popup-content" class="popup-content-user">
+                <table class="popup-header">
+                    <tr>
+                        <td class="popup-header-titre">
+                            <h3 th:text="#{texte.pop.new.user.titre}"></h3>
+                        </td>
+                        <td class="popup-header-close">
+                            <img id="close-user" class="button-close" src="/images/popup/button-close.png">
+                        </td>
+                    </tr>
+                </table>
+                
+                <form th:action="@{/superAdmin/newUser}" th:object="${newUser}" method="post">
+                        
+                    <table class="popup-form">
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="identifiant" th:text="#{texte.pop.new.user.identifiant}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <input id="identifiant" 
+                                       type="text" 
+                                       th:value="*{identifiant}" 
+                                       th:field="*{identifiant}"
+                                       th:pattern="#{validation.pattern.string1}"
+                                       maxlength="20"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="mdp" th:text="#{texte.pop.new.user.mdp}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <input id="mdp" 
+                                       type="password" 
+                                       th:value="*{mdp}" 
+                                       th:field="*{mdp}" 
+                                       th:pattern="#{validation.pattern.string2}"
+                                       maxlength="20"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="role" th:text="#{texte.pop.new.user.role}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <select id="role" th:field="*{roleId}">
+                                    <option th:each="role : ${roleList}" th:value="${role.roleId}" th:text="${role.roleName}"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="popup-form-submit">
+                                <input class="popup-form-submit-button" type="submit" th:value="#{texte.pop.new.user.submit}"/>                            
+                            </td>
+                        </tr>
+                        
+                    </table>
+                    
+                </form>
+                
+            </div>
+        </div>        
+        
+    </body>
+</html>

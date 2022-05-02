@@ -1,0 +1,49 @@
+/*
+style-saison.css
+---------
+*/
+
+
+td#saison-actif-on {
+    background-color: #a1f16d40;
+}
+
+td.table-saison-noSaison{
+    width: 570px;
+}
+
+th.table-saison-nom,
+td.table-saison-nom {
+    width: 180px;
+    height: 15px;
+}
+th.table-saison-budget,
+td.table-saison-budget {
+    width: 150px;
+    height: 15px;
+}
+th.table-saison-actif,
+td.table-saison-actif {
+    width:80px;
+    height: 15px;
+}
+th.table-action,
+td.table-action {
+    width:110px;
+    height: 15px;
+}
+
+
+.std-table thead{
+    display: block;
+}
+.std-table tbody{
+    display: block;
+    height: 628px;
+    overflow-y:overlay;
+}
+
+.table-action tbody{
+    overflow-y:hidden;
+    height: 15px;
+}

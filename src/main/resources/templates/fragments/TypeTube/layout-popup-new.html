@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        
+<!-- ------------------------------------------ POPUP NOUVEAU TYPE-TUBE -------------------------------------------------- -->
+        
+        <div th:fragment="typetube">
+            <div id="popup-content" class="popup-content-typetube">
+                <table class="popup-header">
+                    <tr>
+                        <td class="popup-header-titre">
+                            <h3 th:text="#{texte.pop.new.typetube.titre}"></h3>
+                        </td>
+                        <td class="popup-header-close">
+                            <img id="close-typetube" class="button-close" src="/images/popup/button-close.png">
+                        </td>
+                    </tr>
+                </table>
+                
+                <form th:action="@{/newTypeTube}" th:object="${newTypeTube}" method="post">
+                
+                    <table class="popup-form">
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="nom" th:text="#{texte.pop.new.typetube.nom}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <select id="nom" th:field="*{nom}">
+                                <option th:each="ntt : ${nomTypeTubes}" th:value="${ntt}" th:text="${ntt}"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="commande" th:text="#{texte.pop.new.typetube.commande}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <input id="commande" name="commande" type="checkbox" th:checked="*{commande}"/>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="2" class="popup-form-submit">
+                                <input class="popup-form-submit-button" type="submit" th:value="#{texte.pop.new.typetube.submit}"/>                            
+                            </td>
+                        </tr>
+                    
+                    </table>
+                    
+                </form>
+                
+            </div>
+        </div>        
+        
+    </body>
+</html>

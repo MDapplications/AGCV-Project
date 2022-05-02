@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        
+        
+<!-- --------------- En-tête du tableau dans la page index ----------------- --> 
+
+
+    <thead th:fragment="head">  
+        
+        
+        <tr>
+            <th class="table-tv-empty"></th>
+            <th class="table-label-index" colspan="15">
+                <span th:text="#{texte.global.table.saison.saison} + ${saison.toString}">
+            </th>
+        </tr>
+        
+        <tr class="table-tv-empty"></tr>
+        
+        <tr>
+            <th class="table-tv-empty"></th>
+
+            <th:block th:each="volant : ${listVolants}">
+                <th class="table-tv" colspan="5">
+                    <span th:text="#{texte.global.table.saison.volant} + ${saison.getTypeVolantName(volant).toString}">
+                </th>
+            </th:block>
+        </tr>
+        
+        <tr>
+            <th class="table-th-index"/>
+            <th class="table-th-utilise" colspan="2" th:text="#{texte.global.table.saison.utilise}"/>
+            <th class="table-th-commande" colspan="2" th:text="#{texte.global.table.saison.commande}"/>
+            <th class="table-th-prix" rowspan="2" th:text="#{texte.global.table.saison.prix}"/>
+            <th class="table-th-utilise" colspan="2" th:text="#{texte.global.table.saison.utilise}"/>
+            <th class="table-th-commande" colspan="2" th:text="#{texte.global.table.saison.commande}"/>
+            <th class="table-th-prix" rowspan="2" th:text="#{texte.global.table.saison.prix}"/>
+            <th class="table-th-utilise" colspan="2" th:text="#{texte.global.table.saison.utilise}"/>
+            <th class="table-th-commande" colspan="2" th:text="#{texte.global.table.saison.commande}"/>
+            <th class="table-th-prix" rowspan="2" th:text="#{texte.global.table.saison.prix}"/>
+        </tr>
+        
+        <tr>
+            <th class="table-tv-mois" th:text="#{texte.global.table.saison.mois}"/>
+            <th class="table-tv-nbu" th:text="#{texte.global.table.saison.nb}"/>
+            <th class="table-tv-cu" th:text="#{texte.global.table.saison.cout}"/>
+            <th class="table-tv-nbu" th:text="#{texte.global.table.saison.nb}"/>
+            <th class="table-tv-cu" th:text="#{texte.global.table.saison.cout}"/>
+            <th class="table-tv-nbu" th:text="#{texte.global.table.saison.nb}"/>
+            <th class="table-tv-cu" th:text="#{texte.global.table.saison.cout}"/>
+            <th class="table-tv-nbu" th:text="#{texte.global.table.saison.nb}"/>
+            <th class="table-tv-cu" th:text="#{texte.global.table.saison.cout}"/>
+            <th class="table-tv-nbu" th:text="#{texte.global.table.saison.nb}"/>
+            <th class="table-tv-cu" th:text="#{texte.global.table.saison.cout}"/>
+            <th class="table-tv-nbu" th:text="#{texte.global.table.saison.nb}"/>
+            <th class="table-tv-cu" th:text="#{texte.global.table.saison.cout}"/>
+        </tr>
+        
+    </thead>     
+        
+<!-- ----------------------------------------------------------------------------------- -->     
+    
+    </body>
+</html>

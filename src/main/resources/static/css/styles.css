@@ -1,0 +1,424 @@
+/*
+style.css
+---------
+*/
+
+
+/*  Général     */
+body, p {
+ font: normal 10pt verdana, helvetica, sans-serif;
+ background-color: #101720;
+ color: #8cbaff;
+}
+
+a { font-style: normal; color: #8cdeff; text-decoration: none;}
+a:hover {color: #c0edff;}
+
+fieldset {
+ padding: 10px;
+ border: 1px #0568CD solid;
+ border-radius: 10px;
+ margin: 10px;
+}
+
+
+
+/* En-tête de la page */
+.header {
+    /*position: absolute;*/
+    background: #e6e7e8;
+    padding: 10px;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: #356ade;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+/* Contenu principal de la page */
+.main-content {
+    padding: 10px;
+    font: normal 10pt verdana, helvetica, sans-serif;
+    background-color: #101720;
+    color: #8cbaff;
+}
+
+/* pied de page */
+.footer {
+  color: #c0edff;
+  position: absolute;
+  padding: 5px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #0d0e16;
+  font: normal 8pt 'Montserrat Alternates', sans-serif;
+}
+
+input.footer-log {
+    border: none;
+    outline: none;
+    font-style: normal;
+    color: #c0edff;
+    text-decoration: none;
+    background-color:transparent;
+    padding: 5px;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    font: normal 8pt 'Montserrat Alternates', sans-serif;
+}
+input.footer-log:hover {
+    text-decoration: underline;
+}
+
+.img-background {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+/* REPONSES */
+
+table.table-reponse{
+  border-collapse: collapse;
+}
+
+img.table-reponse {
+  width:30px;
+}
+
+td.td-rep-OTHER,
+td.td-rep-INFO,
+td.td-rep-ADD,
+td.td-rep-REMOVE,
+td.td-rep-EDIT,
+td.td-rep-SUCCESS,
+td.td-rep-ERROR{
+    border-style: solid solid solid none;
+    border-width: 1px;
+    padding-right: 20px;
+    padding-top: 6px;
+    padding-bottom: 4px;
+}
+td.td-icon-OTHER,
+td.td-icon-INFO,
+td.td-icon-ADD,
+td.td-icon-REMOVE,
+td.td-icon-EDIT,
+td.td-icon-SUCCESS,
+td.td-icon-ERROR{
+    border-style: solid none solid solid ;
+    border-width: 1px;
+    padding-left: 14px;
+    padding-top: 6px;
+    padding-bottom: 4px;
+}
+
+td.td-rep-OTHER,
+td.td-icon-OTHER {
+    border-color: #c6ab13;
+    color: #ffef96;
+    background-color:#c6ab1321;
+}
+
+td.td-rep-INFO,
+td.td-icon-INFO {
+    border-color: #1b4cb8;
+    background-color:#1b4cb821;
+}
+
+td.td-rep-ERROR,
+td.td-icon-ERROR {
+    border-color: #900;
+    color: #ff8181;
+    background-color:#99000021;
+}
+
+td.td-rep-REMOVE,
+td.td-icon-REMOVE,
+td.td-rep-SUCCESS,
+td.td-icon-SUCCESS,
+td.td-rep-EDIT,
+td.td-icon-EDIT,
+td.td-rep-ADD,
+td.td-icon-ADD {
+    border-color: #005f12;
+    color: #75ff8f;
+    background-color:#005f1221;
+}
+
+
+
+
+
+/*      menu de navigation      */
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #356ade;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: right;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Navigation : lien des menus principaux */
+#topnav-link {
+    background-color: #1b4cb8;
+    color: #f2f2f2;
+    margin-left: 2px;
+}
+#topnav-link:hover {
+  background-color: #bbd0ff;
+  color: #000;
+}
+
+#topnav-link.superAdmin {
+  background-color:#c6ab13;
+  color: #f2f2f2;
+}
+#topnav-link.superAdmin:hover {
+  background-color:#fff9bb;
+  color: #000;
+}
+
+
+/* Navigation : Sous-menu */
+#topnav-menu,
+#topnav-menu-profil,
+#topnav-menu-commande,
+#topnav-menu-saison,
+#topnav-menu-membre,
+#topnav-menu-user,
+#topnav-menu-compet,
+#topnav-menu-stock,
+#topnav-menu-typevolant,
+#topnav-menu-consomois,
+#topnav-menu-typetube,
+#topnav-menu-prixtube,
+#topnav-menu-data{
+    float: left;
+    background-color: #8cbaff;
+    color: #101720;
+    margin-right: 2px;
+}
+
+#topnav-menu:hover,
+#topnav-menu-profil:hover,
+#topnav-menu-commande:hover,
+#topnav-menu-membre:hover,
+#topnav-menu-saison:hover,
+#topnav-menu-user:hover,
+#topnav-menu-compet:hover,
+#topnav-menu-stock:hover,
+#topnav-menu-typetube:hover,
+#topnav-menu-typevolant:hover,
+#topnav-menu-consomois:hover,
+#topnav-menu-prixtube:hover,
+#topnav-menu-data:hover{
+   background-color: #bdbdbd;
+}
+
+
+/* Navigation : Admin */
+#topnav-admin {
+    float: right;
+    background-color: #900;
+    color: #f2f2f2;
+    margin-left: 4px;
+}
+#topnav-admin:hover{
+    background-color: #bdbdbd;
+    color: #900;
+}
+
+
+
+
+
+
+
+/* -------  Tableaux -------------------------------------------------------------------------- */
+
+.table-su-1 table {
+  text-align: center;
+  margin: auto;
+}
+
+.std-table table {
+border-collapse: collapse;
+color: black;
+margin: auto;
+}
+
+
+.std-table th, td {
+text-align: center;
+padding: 8px;
+}
+
+.std-table td {
+border: 1px solid #ddd;
+}
+
+.std-table tr {
+background-color: #f2f2f2;
+}
+
+.std-table th {
+background-color: #0080ff;
+border-style: solid solid solid solid;
+border-width: 1px 1px 1px 1px;
+border-color: #0066ff;
+color: white;
+}
+
+
+
+th.table-label {
+  background-color: #007015;
+  border-style: solid solid none solid;
+  border-width: 1px 1px 0 1px;
+  border-color: #005f12;
+  color: white;
+  text-align: center;
+}
+
+th.table-action {
+  background-color: #900;
+  border-style: solid solid solid solid;
+  border-width: 1px 1px 1px 1px;
+  border-color: #690000;
+  color: white;
+}
+
+th.table-tv{
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 15px;
+  border-style: none solid none none;
+  border-width: 0 medium 0 0;
+  border-top-color: #0080ff;
+  border-right-color: #101720;
+  border-bottom-color: #0080ff;
+  border-left-color: #0080ff;
+  padding-top: 4px; 
+  padding-bottom: 4px;
+}
+
+th.table-tv-label {
+  background-color: white;
+  color: #0080ff;
+  border-style: solid;
+  border-color: #d5d5d5;
+}
+
+th.table-tv-empty{
+  background-color: #101720;
+  border-style: none solid none solid;
+  border-top-color: #101720;
+  border-right-color: #101720;
+  border-bottom-color: #101720;
+  border-left-color: #101720;
+}
+td.table-tv-empty{
+  background-color: #101720;
+  border-style: solid;
+  border-color: #101720;
+  border-width: medium;
+}
+
+
+th.table-tv-empty1 {
+  background-color: #d5d5d5;
+  border-style: solid;
+  border-color: #d5d5d5;
+}
+tr.table-tv-empty {
+  background-color: #101720;
+  height: 2px;
+}
+
+td.td-non-regler {
+color: white;
+background-color: #900;
+}
+
+
+td.table-label-resume {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #d5d5d5;
+  color: black;
+  text-align:right;
+}
+
+
+
+input.table-tv-nbu,
+input.table-tv-nbc,
+input.table-tv-prix {
+  font: normal 10pt verdana, helvetica, sans-serif;
+  border: none; 
+  outline: none;
+  font-style: normal;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+input#action-input{
+   border: none; 
+}
+
+input#action-input {
+  border: none;
+  outline: none;
+  font-style: normal;
+  color: #900;
+  text-decoration: none;
+  background-color: transparent;
+}
+input#action-input:hover {
+  border: none;
+  outline: none;
+  font-style: normal;
+  color: #900;
+  text-decoration: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+td.table-action td.action-input {
+  padding:0;
+  border: none;
+  margin: 0;
+}
+
+td.table-action a {
+  font-style: normal;
+  color: #900; 
+  text-decoration: none;
+}
+td.table-action a:hover {
+  font-style: normal; 
+  color: #900; 
+  text-decoration: none;
+  text-decoration: underline;
+}
+
+
+.table-reponse table {
+  border-collapse: collapse;
+  color: black;
+  margin: auto;
+}
+
+

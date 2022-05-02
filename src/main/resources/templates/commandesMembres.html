@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    
+    
+    <head th:fragment="headerFragment">
+        <title th:text="${pageTitle}">Template Title</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style-commandes.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style-popup.css}"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100&display=swap" rel="stylesheet">
+        <script type="text/javascript" th:src="@{/js/commande-popup.js}" charset="utf-8" defer></script>
+        <!-- https://www.youtube.com/watch?v=gLWIYk0Sd38 --> 
+    </head>
+    
+
+    <body>
+        <div th:replace="fragments/layout-header :: header"/>
+      
+        <div class="main-content">
+            <!-- réponse du service suite à une action -->
+            <div th:replace="fragments/layout-reponses :: reponse"/>
+            <br/>
+                        
+            <table class="table-commande">
+                <tr>
+                    <td class="table-commande" th:replace="fragments/commande/table-list-commande :: list-commandes" />
+                    <td class="table-commande-resume" th:replace="fragments/commande/table-resume-commande :: resume-commandes" />
+                </tr>
+            </table>
+                        
+        </div>
+        
+        
+        <!-- pop-up section -->
+        <div id="bg-popup" class="bg-popup-commande">
+            <div th:replace="fragments/commande/layout-popup-new :: commande"/>
+        </div>
+            
+        <div th:replace="fragments/layout-footer :: footer"/>
+               
+    </body>
+    
+</html>

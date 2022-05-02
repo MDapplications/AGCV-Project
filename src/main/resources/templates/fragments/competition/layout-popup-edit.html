@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        
+<!-- ------------------------------------------ POPUP MODIFICATION COMPETITION -------------------------------------------------- -->
+        
+        <div th:fragment="compet">
+            <div id="popup-content" class="popup-content-edit-compet">
+                <table class="popup-header">
+                    <tr>
+                        <td class="popup-header-titre">
+                            <h3 th:text="#{texte.pop.edit.compet.titre}"></h3>
+                        </td>
+                        <td class="popup-header-close">
+                            <a href="/competition" >
+                                <img class="button-close" src="/images/popup/button-close.png">
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                
+                <form th:action="@{/compet/{id}(id=*{id})}" th:object="${editCompet}" method="post">
+                        
+                    <table class="popup-form">
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="nom" th:text="#{texte.pop.edit.compet.nom}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <input id="nom" 
+                                       type="text" 
+                                       th:pattern="#{validation.pattern.string2}"
+                                       th:value="*{nom}" 
+                                       th:field="*{nom}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="nbTubesUtilises" th:text="#{texte.pop.edit.compet.nbTubesUtilises}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <input id="nbTubesUtilises" 
+                                       type="number" 
+                                       min="1" 
+                                       th:pattern="#{validation.pattern.integer}"
+                                       th:value="*{nbTubesUtilises}" 
+                                       th:field="*{nbTubesUtilises}"/>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="2" class="popup-form-submit">
+                                <input type="hidden" name="_method" value="put"/>
+                                <input type="hidden" th:value="*{id}" th:field="*{id}" />
+                                <input class="popup-form-submit-button" type="submit" th:value="#{texte.pop.edit.global.submit}"/>                           
+                            </td>
+                        </tr>
+                        
+                    </table>
+                    
+                </form>
+                
+            </div>
+        </div>        
+        
+    </body>
+</html>

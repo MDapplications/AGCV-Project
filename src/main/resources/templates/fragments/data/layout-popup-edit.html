@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+        
+<!-- ------------------------------------------ POPUP EDITION DATA -------------------------------------------------- -->
+        
+       <div th:fragment="data">
+           
+            <div id="popup-content" class="popup-content-edit-data">
+                <table class="popup-header">
+                    <tr>
+                        <td class="popup-header-titre">
+                            <h3 th:text="#{texte.pop.edit.data.titre}"></h3>
+                        </td>
+                        <td class="popup-header-close">
+                            <a href="/superAdmin" >
+                                <img class="button-close" src="/images/popup/button-close.png">
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                
+                <form th:action="@{/data/{id}(id=*{id})}" th:object="${editData}" th:method="post">
+                    <table class="popup-form">
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="id-saison" th:text="#{texte.pop.edit.data.saison}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <select id="id-saison" th:field="*{idSaison}">
+                                <option th:each="saison : ${listSaison}" th:value="${saison.id}" th:text="${saison.toString()}"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="actif" th:text="#{texte.pop.edit.data.actif}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <input id="actif" name="actif" type="checkbox" th:checked="*{actif}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="popup-form-submit">
+                                <input type="hidden" name="_method" value="put"/>
+                                <input type="hidden" th:value="*{id}" th:field="*{id}" />
+                                <input class="popup-form-submit-button" type="submit" th:value="#{texte.pop.edit.global.submit}"/>                             
+                            </td>
+                        </tr>
+                        
+                    </table>
+                    
+                </form>
+                
+            </div>
+        </div>        
+        
+</html>

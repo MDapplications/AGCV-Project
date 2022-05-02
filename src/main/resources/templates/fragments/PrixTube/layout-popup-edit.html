@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        
+<!-- ------------------------------------------ POPUP MODIFICATION PRIX-TUBE -------------------------------------------------- -->
+        
+        <div th:fragment="prixtube">
+            <div id="popup-content" class="popup-content-edit-prixtube">
+                <table class="popup-header">
+                    <tr>
+                        <td class="popup-header-titre">
+                            <h3 th:text="#{texte.pop.edit.prixtube.titre}"></h3>
+                        </td>
+                        <td class="popup-header-close">
+                            <a href="/admin/prixtube" >
+                                <img class="button-close" src="/images/popup/button-close.png">
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                
+                <form th:action="@{/admin/prixtube/{id}(id=*{id})}" th:object="${editPrixTube}" method="post">
+                        
+                    <table class="popup-form">
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="marque" th:text="#{texte.pop.edit.prixtube.marque}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <input id="marque" 
+                                       type="text" 
+                                       th:value="*{marque}" 
+                                       th:field="*{marque}"
+                                       th:pattern="#{validation.pattern.string2}"
+                                       minlength="2"
+                                       maxlength="40"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="prix" th:text="#{texte.pop.edit.prixtube.prix}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <input id="prix" 
+                                       type="number" 
+                                       th:value="*{prix}" 
+                                       th:field="*{prix}"
+                                       th:pattern="#{validation.pattern.double}"
+                                       step="0.01" 
+                                       min="0.01"
+                                       max="1000.00"/>
+                                <span th:text="#{texte.global.devise}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="prixMembre" th:text="#{texte.pop.edit.prixtube.prixMembre}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <input id="prixMembre" 
+                                       type="number" 
+                                       th:value="*{prixMembre}" 
+                                       th:field="*{prixMembre}" 
+                                       th:pattern="#{validation.pattern.double}"
+                                       step="0.01"
+                                       min="0.00" />
+                                <span th:text="#{texte.global.devise}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="actif" th:text="#{texte.pop.edit.prixtube.actif}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <input id="actif" name="actif" type="checkbox" th:checked="*{actif}"/>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="2" class="popup-form-submit">
+                                <input type="hidden" name="_method" value="put"/>
+                                <input type="hidden" th:value="*{id}" th:field="*{id}" />
+                                <input type="hidden" th:value="*{idTypeTube}" th:field="*{idTypeTube}" />
+                                <input class="popup-form-submit-button" type="submit" th:value="#{texte.pop.edit.global.submit}"/>                            
+                            </td>
+                        </tr>
+                        
+                    </table>
+                    
+                </form>
+                
+            </div>
+        </div>        
+        
+    </body>
+</html>

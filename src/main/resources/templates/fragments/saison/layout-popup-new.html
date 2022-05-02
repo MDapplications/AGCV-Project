@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+        
+<!-- ------------------------------------------ POPUP NOUVELLE SAISON -------------------------------------------------- -->
+        
+        <div th:fragment="saison">
+            <div id="popup-content" class="popup-content-saison">
+                <table class="popup-header">
+                    <tr>
+                        <td class="popup-header-titre">
+                            <h3 th:text="#{texte.pop.new.saison.titre}"></h3>
+                        </td>
+                        <td class="popup-header-close">
+                            <img id="close-saison" class="button-close" src="/images/popup/button-close.png">
+                        </td>
+                    </tr>
+                </table>
+                
+                <form th:action="@{/admin/newSaison}" th:object="${newSaison}" method="post">
+                        
+                    <table class="popup-form">
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="anneeDebut" th:text="#{texte.pop.new.saison.anneeDebut}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <input id="anneeDebut" 
+                                       type="number" 
+                                       min="2000"
+                                       step="1"
+                                       th:pattern="#{validation.pattern.integer}"
+                                       th:value="*{annee_debut}" 
+                                       th:field="*{annee_debut}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="budget" th:text="#{texte.pop.new.saison.budget}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <input id="budget"
+                                       type="number"
+                                       min="100,00"
+                                       step="0.01"
+                                       th:pattern="#{validation.pattern.double}"
+                                       th:value="*{budget}"
+                                       th:field="*{budget}" />
+                                <span th:text="#{texte.global.devise}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="actuelle" th:text="#{texte.pop.new.saison.actuelle}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <input id="actuelle" name="actuelle" type="checkbox" th:checked="*{actuelle}"/>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="2" class="popup-form-submit">
+                                <input class="popup-form-submit-button" type="submit" th:value="#{texte.pop.new.saison.submit}"/>                            
+                            </td>
+                        </tr>
+                        
+                    </table>
+                    
+                </form>
+                
+            </div>
+        </div>        
+        
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    
+    
+    <head th:fragment="headerFragment">
+        <title th:text="${pageTitle}">Template Title</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style-saison.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style-popup.css}"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com"/>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100&display=swap" rel="stylesheet"/>
+        <script type="text/javascript" th:src="@{/js/saison-popup.js}" charset="utf-8" defer></script>
+    </head>
+    
+
+    <body>
+        <!-- header section -->
+        <div th:replace="fragments/layout-header :: header"/>
+    
+        <!-- content section -->
+        <div class="main-content">
+            <!-- réponse du service suite à une action -->
+            <div th:replace="fragments/layout-reponses :: reponse"/>
+            <br/>
+            
+            <div class="std-table">
+                <table class="table-saisons">
+                    <thead>
+                        <tr>
+                            <th class="table-label" colspan="4" th:text="#{texte.page.saison.table.titre}"/>
+                        </tr>
+                        <tr>
+                            <!--th th:text="id" class="table-saison-actif"/-->
+                            <th th:text="#{texte.page.saison.table.nom}" class="table-saison-nom"/>
+                            <th th:text="#{texte.page.saison.table.budget}" class="table-saison-budget"/>
+                            <th th:text="#{texte.page.saison.table.actif}" class="table-saison-actif"/>
+                            <th class="table-action" th:text="#{texte.global.page.action}"/>
+                        </tr>
+                    </thead>
+                    <tbody class="table-saison">
+                        <tr th:if="${listSaisons.size()==1}">
+                            <td colspan="4" th:text="#{texte.page.saison.table.noSaison}" class="table-saison-noSaison"/>
+                        </tr>
+                        <tr th:each="saison : ${listSaisons}" th:if="${saison.id!=1}">
+                            <!--td th:id="${saison.getIdH}" th:text="${saison.id}" class="table-saison-actif"/-->
+                            <td th:id="${saison.getIdH}" th:text="${saison.toString}" class="table-saison-nom"/>
+                            <td th:id="${saison.getIdH}" th:text="${saison.getBudgetString} + #{texte.global.devise}" 
+                                class="table-saison-budget"/>
+                            <td th:id="${saison.getIdH}" th:text="${saison.getActif}" class="table-saison-actif"/>
+                            <td th:id="${saison.getIdH}" class="table-action">
+                                <table class="action-input">
+                                <tbody class="action-input">
+                                    <tr>
+                                        <td th:id="${saison.getIdH}" class="action-input">
+                                            <form action="#" th:action="@{/admin/saison/{id}(id=${saison.id})}" th:method="post">
+                                                <input type="hidden" name="_method" value="delete"/>
+                                                <input id="action-input" type="submit" value="Suppr"/>
+                                            </form>
+                                        </td><td th:id="${saison.getIdH}" class="action-input">|</td>
+                                        <td th:id="${saison.getIdH}" class="action-input">
+                                            <form action="#" th:action="@{/admin/saison/{id}(id=${saison.id})}" th:method="post">
+                                                <input id="action-input" type="submit" value="Edit"/>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </br>
+            </br>
+            
+        </div>
+      
+        
+        <!-- pop-up section -->
+        <div id="bg-popup" class="bg-popup-saison">
+            <div th:replace="fragments/saison/layout-popup-new :: saison"/>
+        </div>
+        
+        <div th:replace="fragments/layout-footer :: footer"/>
+    </body>
+    
+</html>
+

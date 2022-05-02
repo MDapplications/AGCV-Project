@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    
+    
+    <head th:fragment="headerFragment">
+        <title th:text="${pageTitle}">Template Title</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style-membre.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style-popup.css}"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com"/>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100&display=swap" rel="stylesheet"/>
+        <script type="text/javascript" th:src="@{/js/membre-popup.js}" charset="utf-8" defer></script>
+    </head>
+    
+
+    <body>
+        <!-- header section -->
+        <div th:replace="fragments/layout-header :: header"/>
+      
+        <!-- content section -->
+        <div class="main-content">
+            <!-- réponse du service suite à une action -->
+            <div th:replace="fragments/layout-reponses :: reponse"/>
+            <br/>
+            
+            <div class="std-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="table-label" colspan="4" th:text="#{texte.page.membre.table.label}"/>
+                        </tr>
+                        <tr>
+                            <th th:text="#{texte.page.membre.table.prenom}" class="table-membre-prenom"/>
+                            <th th:text="#{texte.page.membre.table.nom}" class="table-membre-nom"/>
+                            <th th:text="#{texte.page.membre.table.actif}" class="table-membre-actif"/>
+                            <th class="table-action" th:text="#{texte.global.page.action}"/>
+                        </tr>
+                    </thead>
+                    <tbody class="table-membre">
+                        <tr th:if="${listMembres.empty}">
+                            <td colspan="4" th:text="#{texte.page.membre.noMembre}" class="table-membre-noMembre"/>
+                        </tr>
+                        <tr th:each="membre : ${listMembres}">
+                            <td th:id="${membre.getIdH}" th:text="${membre.prenom}" class="table-membre-prenom"/>
+                            <td th:id="${membre.getIdH}" th:text="${membre.nom}" class="table-membre-nom"/>
+                            <td th:id="${membre.getIdH}" th:text="${membre.getActif}" class="table-membre-actif"/>
+                            <td th:id="${membre.getIdH}" class="table-action">
+                                <table class="action-input">
+                                <tbody class="action-input">
+                                    <tr>
+                                        <td th:id="${membre.getIdH}" class="action-input">
+                                            <form action="#" th:action="@{/admin/membre/{id}(id=${membre.id})}" th:method="post">
+                                                <input type="hidden" name="_method" value="delete"/>
+                                                <input id="action-input" type="submit" value="Suppr"/>
+                                            </form>
+                                        </td><td th:id="${membre.getIdH}" class="action-input">|</td>
+                                        <td th:id="${membre.getIdH}" class="action-input">
+                                            <form action="#" th:action="@{/admin/membre/{id}(id=${membre.id})}" th:method="post">
+                                                <input id="action-input" type="submit" value="Edit"/>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        
+        <!-- pop-up section -->
+        <div id="bg-popup" class="bg-popup-membre">
+            <div th:replace="fragments/membre/layout-popup-new :: membre"/>
+        </div>
+      
+        <div th:replace="fragments/layout-footer :: footer"/>
+    </body>
+    
+</html>

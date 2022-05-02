@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+         
+<!-- ------------------------------------------ POPUP EDITION : MOT DE PASSE utilisateur -------------------------------------------------- -->
+        
+       <div th:fragment="mdp">
+            <div id="popup-content" class="popup-content-edit-mdp">
+                <table class="popup-header">
+                    <tr>
+                        <td class="popup-header-titre">
+                            <h3 th:text="#{texte.pop.edit.mdp.titre}"></h3>
+                        </td>
+                        <td class="popup-header-close">
+                            <a href="/index" >
+                                <img class="button-close" src="/images/popup/button-close.png">
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                
+                <form th:action="@{/mdp/{id}(id=*{id})}" th:object="${editUser}" th:method="post">
+                    <table class="popup-form">
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="identifiant" th:text="#{texte.pop.edit.mdp.identifiant}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <span id="identifiant" th:text="*{identifiant}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="mdp" th:text="#{texte.pop.edit.mdp.mdp}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <input id="mdp" 
+                                       type="password" 
+                                       th:value="*{mdp}" 
+                                       th:field="*{mdp}" 
+                                       th:pattern="#{validation.pattern.string2}"
+                                       maxlength="20"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="newMdp" th:text="#{texte.pop.edit.mdp.newMdp}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <input id="newMdp" 
+                                       type="password" 
+                                       th:value="*{newMdp}" 
+                                       th:field="*{newMdp}" 
+                                       th:pattern="#{validation.pattern.string2}"
+                                       maxlength="20"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="confirmMdp" th:text="#{texte.pop.edit.mdp.confirmMdp}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <input id="confirmMdp" 
+                                       type="password" 
+                                       th:value="*{confirmMdp}" 
+                                       th:field="*{confirmMdp}" 
+                                       th:pattern="#{validation.pattern.string2}"
+                                       maxlength="20"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="popup-form-submit">
+                                <input type="hidden" name="_method" value="put"/>
+                                <input type="hidden" th:value="*{id}" th:field="*{id}" />
+                                <input class="popup-form-submit-button" type="submit" th:value="#{texte.pop.edit.global.submit}"/>                            
+                            </td>
+                        </tr>
+                        
+                    </table>
+                    
+                </form>
+                
+            </div>
+        </div>        
+        
+        
+    </body>
+</html>

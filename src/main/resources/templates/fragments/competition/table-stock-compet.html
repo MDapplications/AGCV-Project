@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        
+        
+<!----------------------- affichage du stock de competition ----------------------->
+
+<td class="table-compet-stock" th:fragment="stock">
+    
+    <!-- affichage du stock competiton actuel -->
+    <div class="std-table">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2" class="table-label-resume-stock">
+                        <span th:text="#{texte.page.competition.table.stock.titre}"></span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-label-resume-stock" th:text="#{texte.page.competition.table.compet.stock}"/>
+                    <td th:text="${stock}" class="table-stock-resume-stock"/>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        
+</td>
+     
+<!-- ----------------------------------------------------------------------------------- --> 
+    
+    </body>
+</html>

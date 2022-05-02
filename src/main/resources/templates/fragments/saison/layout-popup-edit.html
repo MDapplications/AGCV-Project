@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        
+<!-- ------------------------------------------ POPUP EDITION SAISON -------------------------------------------------- -->
+        
+        <div th:fragment="saison">
+            <div id="popup-content" class="popup-content-edit-saison">
+                <table class="popup-header">
+                    <tr>
+                        <td class="popup-header-titre">
+                            <h3 th:text="#{texte.pop.edit.saison.titre}"></h3>
+                        </td>
+                        <td class="popup-header-close">
+                            <a href="/admin/saison" >
+                                <img class="button-close" src="/images/popup/button-close.png">
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                
+                <form th:action="@{/admin/saison/{id}(id=*{id})}" th:object="${editSaison}" method="post">
+                        
+                    <table class="popup-form">
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="budget" th:text="#{texte.pop.edit.saison.budget}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <input id="budget" type="number" th:value="*{budget}" th:field="*{budget}" step="0.01" />
+                                <span th:text="#{texte.global.devise}"/>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="2" class="popup-form-submit">
+                                <input type="hidden" name="_method" value="put"/>
+                                <input type="hidden" th:value="*{id}" th:field="*{id}" />
+                                <input class="popup-form-submit-button" type="submit" th:value="#{texte.pop.edit.global.submit}"/>                            
+                            </td>
+                        </tr>
+                        
+                    </table>
+                    
+                </form>
+                
+            </div>
+        </div>        
+        
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+        
+<!-- ------------------------------------------ POPUP MODIFICATION COMMANDE -------------------------------------------------- -->
+        
+        <div th:fragment="commande">
+            <div id="popup-content" class="popup-content-edit-commande">
+                <table class="popup-header">
+                    <tr>
+                        <td class="popup-header-titre">
+                            <h3 th:text="#{texte.pop.edit.commande.titre}"></h3>
+                        </td>
+                        <td class="popup-header-close">
+                            <a href="/commandesMembres" >
+                                <img class="button-close" src="/images/popup/button-close.png">
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                
+                <form th:action="@{/commande/{id}(id=*{id})}" th:object="${editCommande}" method="post">
+                        
+                    <table class="popup-form">
+                        <tr>
+                            <td class="popup-form-label">
+                                <label for="regler" th:text="#{texte.pop.edit.commande.regler}"></label>
+                            </td>
+                            <td class="popup-form-input">
+                                <input id="regler" name="regler" type="checkbox" th:checked="*{regler}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="popup-form-submit">
+                                <input type="hidden" name="_method" value="put"/>
+                                <input type="hidden" th:value="*{id}" th:field="*{id}" />
+                                <input class="popup-form-submit-button" type="submit" th:value="#{texte.pop.edit.global.submit}"/>                             
+                            </td>
+                        </tr>
+                        
+                    </table>
+                    
+                </form>
+                
+            </div>
+        </div>        
+        
+
+</html>

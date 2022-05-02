@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    
+    
+    <head th:fragment="headerFragment">
+        <title th:text="${pageTitle}">Template Title</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style-compet.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style-popup.css}"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100&display=swap" rel="stylesheet">
+        <script type="text/javascript" th:src="@{/js/competition-popup.js}" charset="utf-8" defer></script>
+        <script type="text/javascript" th:src="@{/js/stock-popup.js}" charset="utf-8" defer></script>
+    </head>
+
+
+    <body>
+        <div th:replace="fragments/layout-header :: header"></div>
+      
+        <!-- content section -->
+        <div class="main-content">
+            <!-- réponse du service suite à une action -->
+            <div th:replace="fragments/layout-reponses :: reponse"/>
+            <br/>
+            
+            <table class="table-compet" th.if="${!saison.toString.isEmpty}">
+                <tr>
+                    <td th:replace="fragments/competition/table-stock-compet :: stock" />
+                    <td th:replace="fragments/competition/table-list-compet :: list" />
+                    <td th:replace="fragments/competition/table-resume-compet :: resume" />
+                </tr>
+            </table>
+                                
+        </div>
+        
+        <!-- pop-up section -->
+        <div id="bg-popup" class="bg-popup-competition">
+            <div th:replace="fragments/competition/layout-popup-new :: compet"/>
+        </div>
+        <div id="bg-popup" class="bg-popup-stock">
+            <div th:replace="fragments/stock/layout-popup-new :: stock"/>
+        </div>
+      
+        <div th:replace="fragments/layout-footer :: footer">...</div>
+    </body>
+    
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        
+        
+<!----------------------- résumé commandes ----------------------->
+
+<td class="table-commande-resume" th:fragment="resume-commandes">
+                 
+    <div class="std-table">
+
+        <table class="std-table-index">
+
+            <thead>
+                <tr>
+                    <th colspan="2" class="table-commandes-label-resume">
+                        <span th:text="#{texte.page.commandesMembres.resume.label}"></span>
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- Montant commandes club -->
+                <tr>
+                    <td class="table-commandes-label-resume"
+                        th:text="#{texte.page.commandesMembres.resume.nbTubes}"/>
+                    <td class="table-commande-resume-tubes"
+                        th:text="${saison.getNbTubesCommandes}"/>
+                </tr>
+                <!-- Montant commandes club -->
+                <tr>
+                    <td class="table-commandes-label-resume"
+                        th:text="#{texte.page.commandesMembres.resume.commandeClub}"/>
+                    <td class="table-commande-resume-club"
+                        th:text="${saison.getStringMontantCommandesClub} + #{texte.global.devise}"/>
+                </tr>
+                <!-- Montant commandes membres -->
+                <tr>
+                    <td class="table-commandes-label-resume"
+                        th:text="#{texte.page.commandesMembres.resume.commandeMembre}"/>
+                    <td class="table-commande-resume-membre"
+                        th:text="${saison.getStringMontantCommandesMembres} + #{texte.global.devise}"/>
+                </tr>
+                <!-- Montant commandes restant à payé -->
+                <tr>
+                    <td class="table-commandes-label-resume"
+                        th:text="#{texte.page.commandesMembres.resume.restant}"/>
+                    <td class="table-commande-resume-restant"
+                        th:if="${saison.getMontantRestant==0.0}"
+                        th:text="${saison.getStringMontantRestant} + #{texte.global.devise}"/>
+                    <td class="table-commande-resume-restant-1"
+                        th:if="${saison.getMontantRestant>0.0}"
+                        th:text="${saison.getStringMontantRestant} + #{texte.global.devise}"/>
+                </tr>
+                <!-- Montant payé par le club apres déduction des membres-->
+                <tr>
+                    <td class="table-commandes-label-resume"
+                        th:text="#{texte.page.commandesMembres.resume.deduc}"/>
+                    <td class="table-commande-resume-deduit"
+                        th:text="${saison.getStringMontantDeduit} + #{texte.global.devise}"/>
+                </tr>
+
+
+            </tbody>
+        </table>
+
+    </div>
+        
+</td>
+     
+<!-- ----------------------------------------------------------------------------------- --> 
+    
+    </body>
+</html>
